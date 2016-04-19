@@ -10,18 +10,3 @@ LAMP STACK
 
 Build with CodeIgniter 3 :+1:
 
-Setup Configuration:
-
-Copy this Virtual host configuration
-```    
-<VirtualHost *:80>
-    DocumentRoot "C:/xampp/htdocs/gnastygaming"
-    ServerName gnastygaming.dev
-    ServerAlias gnastygaming.dev
-    <Directory "c:/xampp/htdocs/gnastygaming">
-        Order allow,deny
-        Allow from all
-    </Directory>
-</VirtualHost>
-```
-    
