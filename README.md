@@ -6,8 +6,8 @@ LAMP STACK
 - [ ] Linux
 - [x] Apache
 - [x] MySQL
-- [x] PHP 5.6 ++
-- 
+- [x] PHP 5.6++
+
 Build with CodeIgniter 3 :+1:
 
 Setup Configuration:
