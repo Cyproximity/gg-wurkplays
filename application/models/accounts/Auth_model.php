@@ -13,6 +13,7 @@ Class Auth_model extends CI_Model {
   public function AUTH_IS_LOGGED_IN(){
     if($this->session->role === 'guest'){
       show_404();
+      $this->session->role = 'guest';
     }
   }
 

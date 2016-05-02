@@ -7,7 +7,7 @@
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/Cyproximity/gg-wurkplays",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -17,5 +17,8 @@
   ],
   "dependencies": {
     "bootstrap": "^3.3.6"
+  },
+  "devDependencies": {
+    "jquery": "^2.2.3"
   }
 }

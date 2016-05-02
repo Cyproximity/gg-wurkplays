@@ -60,6 +60,12 @@ $route['login'] = 'Registry/login';
 
 
 $route['dashboard'] = 'User/dashboard';
+
+//post
+$route['post/delete/(:num)'] = 'Post/delete_post/$1';
+$route['post/update/(:num)'] = 'Post/update_post/$1';
+
+
 $route['settings'] = 'User/user_account';
 $route['profile'] = 'User/user_profile';
 $route['logout'] = 'User/logout';

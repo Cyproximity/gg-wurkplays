@@ -40,6 +40,7 @@ Class User extends CI_Controller {
 
     $this->load->view('user/feeds', $feeds);
     $this->load->view('user/footer');
+
   }
 
   public function user_account(){
@@ -65,10 +66,12 @@ Class User extends CI_Controller {
     $this->load->view('user/footer');
   }
 
+
   public function logout(){
     $this->session->sess_destroy();
     redirect('/login/', 'location', 301);
   }
+
 }
 
 ?>

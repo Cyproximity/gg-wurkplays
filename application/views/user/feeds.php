@@ -1,15 +1,28 @@
-<?php // before post.php // ?>
+<?php // after post.php // ?>
 
 <div class="row">
-    <h3>Status feeds</h3>
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+  <h3>Status feeds</h3>
+  <table class="table">
+    <tr>
+      <th>Post Content</th>
+      <th>Time</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
     <?php foreach($news_feeds as $feeds => $value): ?>
-      <div class="row">
-        <h3><?= $value['post']?></h3>
-      </div>
+    <tr>
+      <td><?= $value['post']?></td>
+      <td><?= timespan($value['time'], time(), 2)?></td>
+      <td>
+      <?php
+        echo anchor('post/update/'.$value['post_id'], 'Edit', 'class="btn btn-default"');
+      ?></td>
+      <td>
+      <?php
+        echo anchor('post/delete/'.$value['post_id'], 'Delete', 'class="btn btn-default"');
+      ?>
+      </td>
+    </tr>
     <?php endforeach; ?>
-    </div>
-    <div class="col-md-3"></div>
-  </div>
+  </table>
 </div>

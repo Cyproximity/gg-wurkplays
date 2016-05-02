@@ -6,6 +6,7 @@ Class Home extends CI_controller {
     parent::__construct();
   }
   public function index(){
+    redirect('/dashboard/', 'refresh', 301);
   }
 }
 ?>
