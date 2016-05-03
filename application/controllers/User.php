@@ -19,7 +19,9 @@ Class User extends CI_Controller {
     );
     $data = array();
 
-    $this->load->view('user/header', $dataHeader);
+    $this->load->view('user/header', $dataHeader); # header block
+
+    $this->load->view('user/top-navigation'); # top mavigation block
 
     $this->form_validation->set_rules('post_message', 'Post', 'trim|required|htmlspecialchars');
 
@@ -27,7 +29,7 @@ Class User extends CI_Controller {
 
     if($this->form_validation->run() === FALSE){
 
-      $this->load->view('user/post', $data);
+      $this->load->view('user/post', $data); # post block
 
     }else{
 
@@ -48,7 +50,9 @@ Class User extends CI_Controller {
       'title' => 'Settings'
     );
 
-    $this->load->view('user/header', $dataHeader);
+    $this->load->view('user/header', $dataHeader);  # header block
+
+    $this->load->view('user/top-navigation'); # top mavigation block
 
     $this->load->view('user/settings');
 
@@ -59,7 +63,9 @@ Class User extends CI_Controller {
     $dataHeader = array(
       'title' => 'Profile'
     );
-    $this->load->view('user/header', $dataHeader);
+    $this->load->view('user/header', $dataHeader); # header block
+
+    $this->load->view('user/top-navigation'); # top mavigation block
 
     $this->load->view('user/profile');
 

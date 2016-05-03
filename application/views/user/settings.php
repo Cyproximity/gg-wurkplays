@@ -1,7 +1,6 @@
-<?php
-  echo anchor('/dashboard/', 'Dashboard');
-  echo anchor('/profile/', 'Profile');
-  echo anchor('/logout/', 'Logout');
-?>
+<div class="container">
+  <div class="row">
+    <h1>Settings</h1>
+  </div>
+</div>
 
-<h1>Settings</h1>
