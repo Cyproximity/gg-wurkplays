@@ -20,17 +20,6 @@ Class User_model extends CI_Model {
     $this->id = $row->gg_accid;
   }
 
-  public function user_post_message($str){
-
-    $data = array(
-      'post' => $str,
-      'time' => now(),
-      'user_id' =>  $this->id
-    );
-
-    $this->db->insert('gg_post', $data);
-  }
-
   public function get_feeds(){
     $query = $this->db->query("SELECT * FROM `gg_post` WHERE `user_id`='".$this->id."' ORDER BY `gg_post`.`time` DESC");
 

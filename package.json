@@ -1,0 +1,23 @@
+{
+  "name": "gnastygaming",
+  "version": "0.1.2",
+  "description": "website of gnasty gaming",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyproximity/gg-wurkplays.git"
+  },
+  "author": "gerald agustin (gerald.agustin09@gmail.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cyproximity/gg-wurkplays/issues"
+  },
+  "homepage": "https://github.com/Cyproximity/gg-wurkplays#readme",
+  "dependencies": {
+    "express": "^4.13.4",
+    "socket.io": "^1.4.6"
+  }
+}

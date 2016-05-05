@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <?php echo anchor('/dashboard/', 'Dashboard', 'class="navbar-brand"');?>
+      <?php echo anchor('/dashboard/', 'Gnasty <i></i> Gaming', 'class="navbar-brand"');?>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -24,7 +24,9 @@
       <ul class="nav navbar-nav navbar-right">
         <li><?php echo anchor('/profile/', 'Profile'); ?></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          <span class="glyphicon glyphicon-cog"></span>
+          </a>
           <ul class="dropdown-menu">
 
 

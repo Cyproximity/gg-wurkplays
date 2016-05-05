@@ -1,5 +1,7 @@
 <?php // after post.php // ?>
 
+<div id="iotest"></div>
+
 <div class="row">
   <h3>Status feeds</h3>
   <table class="table">
@@ -26,3 +28,5 @@
     <?php endforeach; ?>
   </table>
 </div>
+
+

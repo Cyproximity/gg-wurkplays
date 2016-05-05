@@ -1,7 +1,21 @@
 <?php
 Class Post_model extends CI_Model {
+  protected $id;
+
   public function __construct() {
+
     parent::__construct();
+
+    $this->get_user_account();
+
+  }
+
+  public function get_user_account(){
+    $query = $this->db->query("SELECT * FROM `gg_accounts` WHERE `username`='".$this->session->username."'");
+
+    $row = $query->row();
+
+    $this->id = $row->gg_accid;
   }
 
   public function delete_this_post($id) {
@@ -9,10 +23,21 @@ Class Post_model extends CI_Model {
     $query = $this->db->where('post_id', $id)->delete('gg_post');
 
   }
+
+  public function post_this_status($str){
+
+    $data = array(
+      'post' => $str,
+      'time' => now(),
+      'user_id' =>  $this->id
+    );
+
+    $this->db->insert('gg_post', $data);
+  }
+
   public function update_this_post($id, $data) {
-    echo time();
     $query = $this->db->set('post', $data)
-                      ->set('time', time())
+                      ->set('time', now())
                       ->where('post_id', $id)
                       ->update('gg_post');
 
