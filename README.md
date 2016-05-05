@@ -8,5 +8,9 @@ LAMP STACK
 - [x] MySQL
 - [x] PHP 5.6++
 
-Build with CodeIgniter 3 :+1:
+NodeJS
+- [x] Bower
+- [x] Socket.io
+
+Still in prototype stage but this will be dope as af! :+1:
 
