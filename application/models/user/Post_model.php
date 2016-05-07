@@ -33,6 +33,8 @@ Class Post_model extends CI_Model {
     );
 
     $this->db->insert('gg_post', $data);
+
+    return $this->db->insert_id();
   }
 
   public function update_this_post($id, $data) {

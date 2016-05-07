@@ -39,14 +39,20 @@ Class User extends CI_Controller {
     $data['posted_status'] = $this->input->post('post_content');
 
     if($this->form_validation->run() === FALSE){
+
       $data['success'] = false;
       $data['notification'] = '<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 alert alert-danger alert-dismissable"><i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' . validation_errors() . '</div>' ;
+
     }else{
-      $this->post->post_this_status($data['posted_status']);
+      $id = $this->post->post_this_status($data['posted_status']);
 
       $data['success'] = true;
       $data['notification'] = '<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 alert alert-success" role="alert"> <i class="fa fa-check"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Successfully Posted</div>';
 
+      $delete = anchor('post/delete/'.$id, 'Delete', 'class="btn btn-default"');
+      $edit = anchor('post/update/'.$id, 'Edit', 'class="btn btn-default"');
+
+      $data['row'] = '<tr><td>'.$data['posted_status'].'</td><td>'.timespan(time(), 2).'</td><td>'.$edit.'</td><td>'.$delete.'</td></tr>';
     }
 
     echo json_encode($data);

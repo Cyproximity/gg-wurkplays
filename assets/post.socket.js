@@ -18,9 +18,12 @@ $(document).ready(function(){
 
           $('#posted_status').val('');
 
+          console.log(data.row);
+
           $('#notification').html(data.notification);
 
           socket.emit('status_post', {
+            content: data.row,
             status: data.posted_status
           });
 
@@ -37,5 +40,5 @@ $(document).ready(function(){
 });
 
 socket.on('status_post', function (data) {
-  alert('status'+ data.status);
+  $('#table-content').prepend(data.content);
 });

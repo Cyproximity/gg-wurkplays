@@ -14,8 +14,10 @@ server.listen(port, function() {
 io.on('connection', function(socket) {
 
   socket.on('status_post', function (data) {
-    socket.emit('status_post', {
+    io.sockets.emit('status_post', {
+      content: data.content,
       status: data.status
+
     });
   });
 
