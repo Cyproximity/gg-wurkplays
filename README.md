@@ -12,5 +12,5 @@ NodeJS
 - [x] Bower
 - [x] Socket.io
 
-Still in prototype stage but this will be dope as af! :+1:
+:+1:
 
