@@ -31,6 +31,10 @@ Class User extends CI_Controller {
     $this->load->view('user/basic_template/footer');
   }
 
+  public function news_feeds(){
+    echo json_encode($this->user->get_feeds());
+  }
+
   public function post_status(){
     $this->load->model('user/Post_model', 'post');
 
@@ -57,7 +61,6 @@ Class User extends CI_Controller {
 
     echo json_encode($data);
   }
-
 
   public function user_account(){
     $dataHeader = array(

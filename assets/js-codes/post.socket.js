@@ -1,3 +1,4 @@
+//codes for post via http post method and integrated in socket.io
 var socket = io.connect('http://'+window.location.hostname+':3000');
 
 $(document).ready(function(){

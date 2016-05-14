@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 Class User_model extends CI_Model {
 
-  protected $id;
+  public $id;
 
   public function __construct(){
     parent::__construct();

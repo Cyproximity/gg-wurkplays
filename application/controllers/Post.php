@@ -1,5 +1,6 @@
 <?php
 Class Post extends CI_Controller {
+
   public function __construct(){
     parent::__construct();
 
@@ -10,6 +11,7 @@ Class Post extends CI_Controller {
     $this->load->model('user/Post_model', 'action');
 
   }
+
   public function delete_post($id){
 
     $this->action->delete_this_post($id);
@@ -44,5 +46,41 @@ Class Post extends CI_Controller {
     $this->load->view('user/basic_template/footer');
 
   }
+
+  public function comment_send(){
+
+    $this->form_validation->set_rules('comment', 'comment', 'trim|required|htmlspecialchars');
+
+    $comment  = $this->input->post('comment');
+    $postid   = $this->input->post('post_id');
+
+    if($this->form_validation->run() === FALSE){
+
+      $data['status']   =  'error';
+      $data['message']  = '<div class="alert alert-danger alert-dismissable" role="alert"><i class="fa fa-ban"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>'.validation_errors().'</div>';
+
+      $data['SID'] = $this->action->id;
+
+      $data['access']   = FALSE;
+    }else{
+
+      $template = '<dl class="dl-horizontal"><dt>'.$this->action->username.'</dt><dd>'.$comment.'</dd></dl>';
+
+      $data = array(
+        'access'  => TRUE,
+        'status'  => 'success',
+        'message' => $template,
+        'SID'     => $this->action->id,
+        'PID'     => $postid,
+        'USERNAME'=> $this->action->username,
+        'timespan'=> now(),
+        'test'    => $this->action->count_comment($postid)
+      );
+      /////////////////////////// $user_id, $post_id, $comment
+      $this->action->new_comment($this->action->id, $postid, $comment);
+    }
+    echo json_encode($data);
+  }
+
 }
 ?>

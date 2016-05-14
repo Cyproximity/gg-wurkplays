@@ -11,6 +11,12 @@
       'rel'   => 'stylesheet'
       );
     echo link_tag($bootstrap);
+    $featherlight =  array(
+      'href'  => 'assets/js-libraries/featherlight-1.4.1/release/featherlight.min.css',
+      'type'  => 'text/css',
+      'rel'   => 'stylesheet'
+      );
+    echo link_tag($featherlight);
    ?>
 
 </head>
