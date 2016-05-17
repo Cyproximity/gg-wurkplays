@@ -12,8 +12,31 @@ $(function(){
      });
 
   ////////// app start here
+    console.log(data);
+    function get_comments(postname){
+      $.ajax({
+        type    : 'GET',
+        url     : '/post/comment_get',
+        data    : {key: true, user_id: 'test', post_id: postname},
+        dataType: 'json',
+        success : function(data){
+          console.log('================================================================');
+          $.each(data, function(key, value){
+            console.log(key +'-'+ value.SID + ' | '+value.CID+' | '+ value.DATE +' | comment content: '+ value.CC);
+            $('#commentlog_'+postname).append('<dl class="dl-horizontal"><dt>'+value.SID+'</dt><dd>'+value.CC+'</dd></dl>');
+          });
+          console.log('================================================================');
+        },
+        error   : function(xhr, status, error){
+          console.log(status);
+          console.log(error);
+        }
+      });
+    }
 
     $.each(data, function(key, val){
+      get_comments(val);
+
       $('#btncomment_'+val).on('click', function(){
         console.log('send comment thru comment box no. : commentbox_'+ val +' | used button: btncomment_'+ val);
         var str = $('#commentbox_'+val);

@@ -82,5 +82,23 @@ Class Post extends CI_Controller {
     echo json_encode($data);
   }
 
+  public function comment_get() {
+
+    $this->output->set_header('Content-Type: application/json; charset="UTF-8"');
+    $this->output->set_header('pragma: no-cache');
+
+    $data = array(
+        'key'     => html_escape( $this->input->get('key') ),
+        'user_id' => html_escape( $this->input->get('user_id') ),
+        'post_id' => html_escape( $this->input->get('post_id') )
+    );
+    if($data['key'] == TRUE){
+      $this->action->get_comment($data['post_id'], $data['user_id']);
+    }
+    else{
+      $error = array('status' => '400','error'  => 'Bad Request (400)');
+      echo json_encode($error);
+    }
+  }
 }
 ?>

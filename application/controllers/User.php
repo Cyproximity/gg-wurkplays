@@ -50,13 +50,17 @@ Class User extends CI_Controller {
     }else{
       $id = $this->post->post_this_status($data['posted_status']);
 
+      $counted_comments = $this->post->counted_comment($id);
+
       $data['success'] = true;
       $data['notification'] = '<div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 alert alert-success" role="alert"> <i class="fa fa-check"></i><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Successfully Posted</div>';
 
       $delete = anchor('post/delete/'.$id, 'Delete', 'class="btn btn-default"');
       $edit = anchor('post/update/'.$id, 'Edit', 'class="btn btn-default"');
+      $comments = '<a href="#"><span class="badge">'.$counted_comments.'</span></a>';
+      $lbox = '<a href="#" data-featherlight-persist="true" data-featherlight="#fl-'.$id.'">'.$data['posted_status'].'</a>';
 
-      $data['row'] = '<tr><td>'.$data['posted_status'].'</td><td>'.timespan(time(), 2).'</td><td>'.$edit.'</td><td>'.$delete.'</td></tr>';
+      $data['row'] = '<tr><td>'.$lbox.'</td><td>'.$comments.'</td><td>'.timespan(time(), 2).'</td><td>'.$edit.'</td><td>'.$delete.'</td></tr>';
     }
 
     echo json_encode($data);

@@ -14,11 +14,13 @@ Class Post_model extends CI_Model {
   }
 
   public function get_user_account(){
-    $query = $this->db->query("SELECT * FROM `gg_accounts` WHERE `username`='".$this->session->username."'");
+
+    $query = $this->db->select('*')->from('gg_accounts')->where('username', $this->session->username)->get();
 
     $row = $query->row();
 
     $this->id = $row->gg_accid;
+
     $this->username = $row->username;
   }
 
@@ -42,6 +44,7 @@ Class Post_model extends CI_Model {
   }
 
   public function update_this_post($id, $data) {
+
     $query = $this->db->set('post', $data)
                       ->set('time', now())
                       ->where('post_id', $id)
@@ -55,11 +58,14 @@ Class Post_model extends CI_Model {
     $query = $this->db->select('*')->from('gg_post')->where('post_id', $id)->get();
 
     $row = $query->row();
+
     if(isset($row)) {
+
       $data = array(
         'post_id' => $row->post_id,
         'post_message' => $row->post
       );
+
       return $data;
     }
   }
@@ -76,17 +82,68 @@ Class Post_model extends CI_Model {
     $query = $this->db->insert('gg_comments',$data);
   }
 
-  public function count_comment($post_id){
+  public function counted_comment($post_id){
+
     $query = $this->db->query("SELECT * FROM `gg_post` WHERE `post_id` = '".$post_id."'");
 
     $row = $query->row();
+
     if(isset($row)){
+
+      $comments = $row->count_comment;
+    }
+
+    return $comments;
+  }
+
+  public function count_comment($post_id){
+
+    $query = $this->db->query("SELECT * FROM `gg_post` WHERE `post_id` = '".$post_id."'");
+
+    $row = $query->row();
+
+    if(isset($row)){
+
       $counted_data = $row->count_comment;
     }
+
     $solution = $counted_data + 1;
+
     $query = $this->db->set('count_comment', $solution)->where('post_id', $post_id)->update('gg_post');
 
     return $solution;
+  }
+
+  public function get_comment($post_id, $user_id){
+
+    if($post_id != null && $user_id != null){
+
+      $query = $this->db->select('*')->from('gg_comments')->where('post_id', $post_id)->get();
+
+      $data = array();
+
+      if($query->num_rows() > 0) {
+      //  echo $query->num_rows();
+        foreach ($query->result() as $key => $row) {
+          $data[$key] = array(
+            'SID' => $row->post_id,
+            'CID' => $row->comment_id,
+            'CC'  => $row->comment,
+            'TS'  => timespan($row->time, time(), 2),
+            'DATE'=> standard_date('DATE_RFC822',$row->time)
+          );
+        }
+      }
+      echo( json_encode($data) );
+    ////
+    }
+    else{
+
+      $error = array('status' => '400','error'  => 'Bad Request (400)');
+
+      echo json_encode($error);
+    }
+
   }
 
 }

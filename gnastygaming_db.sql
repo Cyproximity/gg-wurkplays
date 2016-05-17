@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2016 at 06:49 PM
+-- Generation Time: May 14, 2016 at 11:20 PM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 5.6.19
 
@@ -35,6 +35,13 @@ CREATE TABLE `gg_accounts` (
   `time` int(64) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `gg_accounts`
+--
+
+INSERT INTO `gg_accounts` (`gg_accid`, `username`, `email`, `password`, `role`, `time`) VALUES
+(24, 'gerald.agustin', 'geraldagustin09@gmail.com', '681df04739e2c9ddd9d2f498807a50d4785c81996984dcc1e40c04e76e0997de4622dcd66fcd243103f0e1a8a4c1f05f4be5a229616b346b341d495a643c48df4ncbIjMMUvowCOjKC22OTex3ISf6M+/vuQ==', 'normal_user_privilege', 1463099939);
+
 -- --------------------------------------------------------
 
 --
@@ -64,6 +71,32 @@ CREATE TABLE `gg_comments` (
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gg_comments`
+--
+
+INSERT INTO `gg_comments` (`comment_id`, `comment`, `time`, `user_id`, `post_id`) VALUES
+(37, 'asdasd', 1463204071, 24, 237),
+(38, 'nice!', 1463204083, 24, 237),
+(39, 'test', 1463205259, 24, 237),
+(40, 'test', 1463205571, 24, 237),
+(41, 'asd', 1463205641, 24, 237),
+(42, 'asd', 1463205686, 24, 237),
+(43, 'asd', 1463205714, 24, 237),
+(44, 'asd', 1463205734, 24, 237),
+(45, 'asd', 1463205768, 24, 237),
+(46, 'asd', 1463205781, 24, 237),
+(47, 'asdasd', 1463205853, 24, 237),
+(48, 'asd', 1463205892, 24, 237),
+(49, 'asd', 1463205981, 24, 237),
+(50, 'asdasd', 1463206045, 24, 237),
+(51, 'asdzxc', 1463206302, 24, 237),
+(52, 'asddas', 1463206460, 24, 237),
+(53, 'zxczxczxczxczxc', 1463206643, 24, 237),
+(54, 'asdasdasd', 1463206651, 24, 237),
+(55, 'asdasdasdasdasdasdasdasdasdasd', 1463206660, 24, 237),
+(56, 'test', 1463259220, 24, 240);
 
 -- --------------------------------------------------------
 
@@ -376,9 +409,23 @@ CREATE TABLE `gg_keys` (
 CREATE TABLE `gg_post` (
   `post_id` int(11) NOT NULL,
   `post` text NOT NULL,
+  `count_comment` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gg_post`
+--
+
+INSERT INTO `gg_post` (`post_id`, `post`, `count_comment`, `time`, `user_id`) VALUES
+(209, 'asdasd', 0, 1462762834, 22),
+(237, 'New post!', 4, 1463203648, 24),
+(238, 'test!', 0, 1463257775, 24),
+(239, 'test!', 0, 1463258365, 24),
+(240, 'test', 1, 1463258467, 24),
+(244, 'test!', 0, 1463260416, 24),
+(245, 'test', 0, 1463260764, 24);
 
 -- --------------------------------------------------------
 
@@ -392,8 +439,6 @@ CREATE TABLE `gg_sessions` (
   `timestamp` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `data` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `gg_user_games`
@@ -502,17 +547,17 @@ ALTER TABLE `gg_user_relations`
 -- AUTO_INCREMENT for table `gg_accounts`
 --
 ALTER TABLE `gg_accounts`
-  MODIFY `gg_accid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `gg_accid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `gg_accounts_info`
 --
 ALTER TABLE `gg_accounts_info`
-  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `gg_comments`
 --
 ALTER TABLE `gg_comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 --
 -- AUTO_INCREMENT for table `gg_countries`
 --
@@ -537,7 +582,7 @@ ALTER TABLE `gg_keys`
 -- AUTO_INCREMENT for table `gg_post`
 --
 ALTER TABLE `gg_post`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=246;
 --
 -- AUTO_INCREMENT for table `gg_user_games`
 --
