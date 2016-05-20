@@ -6,7 +6,7 @@
 
   <script src="<?php echo base_url('assets/js-libraries/featherlight-1.4.1/release/featherlight.min.js'); ?>" type="text/javascript" charset="utf-8"></script>
 
-  <script src="<?php echo base_url('assets/bundle.js'); ?>" type="text/javascript" charset="utf-8"></script>
+  <script src="<?php echo base_url('build/bundle.js'); ?>" type="text/javascript" charset="utf-8"></script>
 
 
 

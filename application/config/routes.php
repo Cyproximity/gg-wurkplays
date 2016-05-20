@@ -52,19 +52,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $route['default_controller'] = 'Home';
-$route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['404_override'] = '';
 
 $route['register'] = 'Registry/register';
 $route['login'] = 'Registry/login';
 
 
+//login credential needed to access this routes
 $route['dashboard'] = 'User/dashboard';
 
 //post
 $route['post/delete/(:num)'] = 'Post/delete_post/$1';
 $route['post/update/(:num)'] = 'Post/update_post/$1';
 
+//Seacrh Queries
+$route['search'] = 'Search/index';
 
 $route['settings'] = 'User/user_account';
 $route['profile'] = 'User/user_profile';

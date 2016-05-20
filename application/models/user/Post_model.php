@@ -1,4 +1,6 @@
 <?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
 Class Post_model extends CI_Model {
 
   public $id;
@@ -75,7 +77,7 @@ Class Post_model extends CI_Model {
     $data = array(
       'user_id' => $user_id,
       'post_id' => $post_id,
-      'comment' => $comment,
+      'comment' => html_escape($comment),
       'time' => now()
     );
 
@@ -114,6 +116,16 @@ Class Post_model extends CI_Model {
     return $solution;
   }
 
+  public function get_individual_username($id){
+    $query = $this->db->select('*')->from('gg_accounts')->where('gg_accid', $id)->get();
+
+    $row =$query->row();
+
+    if(isset($row)){
+      return $row->username;
+    }
+  }
+
   public function get_comment($post_id, $user_id){
 
     if($post_id != null && $user_id != null){
@@ -125,8 +137,11 @@ Class Post_model extends CI_Model {
       if($query->num_rows() > 0) {
       //  echo $query->num_rows();
         foreach ($query->result() as $key => $row) {
+          $username = $this->get_individual_username($row->user_id);
+
           $data[$key] = array(
-            'SID' => $row->post_id,
+            'SID' => $username,
+            'PID' => $row->post_id,
             'CID' => $row->comment_id,
             'CC'  => $row->comment,
             'TS'  => timespan($row->time, time(), 2),

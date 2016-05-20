@@ -13,6 +13,14 @@ $(function(){
 
   ////////// app start here
     console.log(data);
+    function escapeHtml(text) {
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
     function get_comments(postname){
       $.ajax({
         type    : 'GET',
@@ -20,12 +28,12 @@ $(function(){
         data    : {key: true, user_id: 'test', post_id: postname},
         dataType: 'json',
         success : function(data){
-          console.log('================================================================');
+          console.log('=====| comment |=====');
+
           $.each(data, function(key, value){
             console.log(key +'-'+ value.SID + ' | '+value.CID+' | '+ value.DATE +' | comment content: '+ value.CC);
-            $('#commentlog_'+postname).append('<dl class="dl-horizontal"><dt>'+value.SID+'</dt><dd>'+value.CC+'</dd></dl>');
+            $('#commentlog_'+postname).append('<dl class="dl-horizontal"><dt>'+value.SID+'</dt><dd>'+escapeHtml(value.CC)+'</dd></dl>');
           });
-          console.log('================================================================');
         },
         error   : function(xhr, status, error){
           console.log(status);

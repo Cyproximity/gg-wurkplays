@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="gg no-js">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,5 +18,6 @@
       );
     echo link_tag($featherlight);
    ?>
-
+  <noscript>Your browser does not support JavaScript!</noscript>
 </head>
+<body>
