@@ -12,5 +12,9 @@ NodeJS
 - [x] Bower
 - [x] Socket.io
 
+Built in Webpack
+- [x] Babeljs Compiler [es2016]
+- [x] ReactJs
+
 :+1:
 
