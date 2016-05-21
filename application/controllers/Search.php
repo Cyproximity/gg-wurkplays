@@ -12,6 +12,7 @@ Class Search extends CI_Controller {
 
   public function index(){
     $search = html_escape($this->input->get('_q'));
+    $selection = html_escape($this->input->get('_category'));
 
     $data = array(
       'title' => 'Search',
@@ -20,7 +21,10 @@ Class Search extends CI_Controller {
 
     $this->load->view('user/basic_template/header', $data);
     $this->load->view('user/basic_template/top-navigation', $data);
-    $this->search->find($search);
+
+    $search_result['search_result'] = $this->search->find($search, $this->search->category($selection));
+    $this->load->view('user/search/search.php', $search_result);
+
     $this->load->view('user/basic_template/footer', $data);
   }
 
